@@ -40,14 +40,6 @@ const Modal: React.FC<ModalProps> = (props) => {
     return (
         <div
             className="modal"
-            draggable={true}
-            onDragEnter={() => setVisible(false)}
-            onDrag={(e) => setPosition([e.clientY, e.clientX])}
-            onDragEnd={(e) => {
-                e.preventDefault();
-                setPosition([e.clientY, e.clientX]);
-                setVisible(true);
-            }}
             style={{
                 top: `${top}px`,
                 left: `${left}px`,
@@ -55,7 +47,17 @@ const Modal: React.FC<ModalProps> = (props) => {
                 zIndex
             }}
         >
-            <div className="modal-header">
+            <div
+                className="modal-header"
+                draggable={true}
+                onDragEnter={() => setVisible(false)}
+                onDrag={(e) => setPosition([e.clientY, e.clientX])}
+                onDragEnd={(e) => {
+                    e.preventDefault();
+                    setPosition([e.clientY, e.clientX]);
+                    setVisible(true);
+                }}
+            >
                 <div className="modal-title">
                     {title ? title : ''}
                 </div>

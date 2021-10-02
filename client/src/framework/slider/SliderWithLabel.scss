@@ -8,6 +8,15 @@
   flex-direction: row;
 
   .slider {
+    display: flex;
     flex: 1 1;
+
+    input {
+      flex: 1 1;
+    }
+  }
+
+  .slider-value {
+    min-width: 3em;
   }
 }

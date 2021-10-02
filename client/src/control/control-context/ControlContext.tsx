@@ -1,12 +1,12 @@
 import React, {useMemo, useState} from "react";
 
 type ControlContext = {
-    rotation: [number, number];
-    setRotation: (newRotation: [number, number]) => void;
+    rotation: [number, number, number];
+    setRotation: (newRotation: [number, number, number]) => void;
 }
 
 const ControlContextDefaultValues: ControlContext = {
-    rotation: [0, 0],
+    rotation: [0, 0, 0],
     setRotation: () => {}
 }
 
@@ -15,7 +15,7 @@ const Context = React.createContext<ControlContext>(ControlContextDefaultValues)
 const ControlContextProvider: React.FC = (props) => {
     const { children } = props;
 
-    const [rotation, setRotation] = useState<[number, number]>(ControlContextDefaultValues.rotation);
+    const [rotation, setRotation] = useState<[number, number, number]>(ControlContextDefaultValues.rotation);
 
    const context = useMemo(() => {
        return {

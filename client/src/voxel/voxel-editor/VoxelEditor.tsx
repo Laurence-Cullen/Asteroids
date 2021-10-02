@@ -1,22 +1,33 @@
 import React from 'react'
 import { Canvas } from '@react-three/fiber'
 import {Box} from "../objects/box/Box";
+import {RotatingGroup} from "../construct/rotating-group/RotatingGroup";
+import {useControls} from "../../control/control-context/ControlContext";
 
 import "./VoxelEditor.scss";
-import {RotatingGroup} from "../construct/rotating-group/RotatingGroup";
+
+const boxPositions: [number, number, number][] = [
+    [-1, 0, 0],
+    [1, 0, 0],
+    [0, 1, 0],
+    [0, 2, 0],
+    [0, 3, 0]
+];
 
 const VoxelEditor: React.FC<{}> = () => {
+    const {
+        rotation
+    } = useControls();
+
+    const boxes = boxPositions.map((position) => <Box position={position} />);
+
     return (
         <Canvas className="voxel-editor">
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
-            <RotatingGroup rotationVector={[0.1, 0.1]}>
-                <Box position={[-1, 0, 0]} />
+            <RotatingGroup rotationVector={rotation}>
                 <Box position={[0, 0, 0]} />
-                <Box position={[1, 0, 0]} />
-                <Box position={[0, 1, 0]} />
-                <Box position={[0, 2, 0]} />
-                <Box position={[0, 3, 0]} />
+                {boxes}
             </RotatingGroup>
         </Canvas>
     );

@@ -2,7 +2,7 @@ import React, {MutableRefObject, useRef} from "react";
 import {GroupProps, useFrame} from "@react-three/fiber";
 
 type RotatingGroupProps = {
-    rotationVector: [number, number]
+    rotationVector: [number, number, number]
 };
 
 const RotatingGroup: React.FC<RotatingGroupProps> = (props) => {
@@ -11,7 +11,7 @@ const RotatingGroup: React.FC<RotatingGroupProps> = (props) => {
         rotationVector
     } = props;
 
-    const [x, y] = rotationVector;
+    const [x, y, z] = rotationVector;
 
     const ref: MutableRefObject<GroupProps | null> = useRef(null)
 
@@ -19,6 +19,7 @@ const RotatingGroup: React.FC<RotatingGroupProps> = (props) => {
         if (ref.current !== null) {
             ref.current.rotation.x += x;
             ref.current.rotation.y += y;
+            ref.current.rotation.z += z;
         }
     })
 
@@ -30,7 +31,7 @@ const RotatingGroup: React.FC<RotatingGroupProps> = (props) => {
 }
 
 RotatingGroup.defaultProps = {
-    rotationVector: [0, 0]
+    rotationVector: [0, 0, 0]
 }
 
 export { RotatingGroup };
