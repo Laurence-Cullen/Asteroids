@@ -9,6 +9,8 @@ type Rotation = {
 type ControlContext = {
     rotation: Rotation; // vec3
     setRotation: (newRotation: Rotation) => void;
+    file: File | null,
+    setFile: (file: File) => void
 }
 
 const ControlContextDefaultValues: ControlContext = {
@@ -17,7 +19,9 @@ const ControlContextDefaultValues: ControlContext = {
         azimuth: Math.PI/4,
         speed: 0.01
     },
-    setRotation: () => {}
+    setRotation: () => {},
+    file: null,
+    setFile: () => {}
 }
 
 const Context = React.createContext<ControlContext>(ControlContextDefaultValues);
@@ -26,11 +30,14 @@ const ControlContextProvider: React.FC = (props) => {
     const { children } = props;
 
     const [rotation, setRotation] = useState<Rotation>(ControlContextDefaultValues.rotation);
+    const [file, setFile] = useState<File | null>(ControlContextDefaultValues.file);
 
-   const context = useMemo(() => {
+    const context = useMemo(() => {
        return {
            rotation,
-           setRotation
+           setRotation,
+           file,
+           setFile
        }
     }, [rotation]);
 

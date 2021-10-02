@@ -20,8 +20,9 @@ const RotationModal: React.FC<{}> = () => {
     return (
         <Modal
             title="Rotation"
-            width={200}
-            height={200}
+            width={300}
+            height={150}
+            initialPosition={[10, 10]}
         >
             <SliderWithLabel
                 label="Polar angle"

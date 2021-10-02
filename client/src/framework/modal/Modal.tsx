@@ -26,7 +26,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     const [position, setPosition] = useState<[number, number]>(initialPosition ? initialPosition : [0, 0]);
 
     const [
-        top, left
+        left, top
     ] = position;
 
     const zIndex = order || 1;
@@ -51,10 +51,9 @@ const Modal: React.FC<ModalProps> = (props) => {
                 className="modal-header"
                 draggable={true}
                 onDragEnter={() => setVisible(false)}
-                onDrag={(e) => setPosition([e.clientY, e.clientX])}
                 onDragEnd={(e) => {
                     e.preventDefault();
-                    setPosition([e.clientY, e.clientX]);
+                    setPosition([e.clientX, e.clientY]);
                     setVisible(true);
                 }}
             >

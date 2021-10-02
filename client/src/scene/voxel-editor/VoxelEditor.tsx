@@ -9,7 +9,6 @@ const boxPositions: [number, number, number][] = [
    [0, 3, 0]
 ];
 
-
 const VoxelEditor: React.FC<{}> = () => {
     const boxes = boxPositions.map((position, idx) => <Box key={idx} position={position} />);
 
