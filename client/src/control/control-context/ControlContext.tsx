@@ -13,8 +13,8 @@ type ControlContext = {
 
 const ControlContextDefaultValues: ControlContext = {
     rotation: {
-        polar: 0,
-        azimuth: 0,
+        polar: Math.PI/8,
+        azimuth: Math.PI/4,
         speed: 0.01
     },
     setRotation: () => {}
