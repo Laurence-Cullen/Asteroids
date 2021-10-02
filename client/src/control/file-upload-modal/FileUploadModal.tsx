@@ -10,8 +10,6 @@ const FileUploadModal: React.FC<{}> = () => {
     } = useControls();
 
     const handleChange = (e: ChangeEvent<FileEventTarget>) => {
-        console.log(e, e.target.files[0]);
-
         setFile(
             window.URL.createObjectURL(e.target.files[0])
         );

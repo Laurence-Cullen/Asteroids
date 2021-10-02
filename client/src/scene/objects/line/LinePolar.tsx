@@ -19,7 +19,7 @@ const LinePolar: React.FC<LinePolarProps> = (props) => {
 
     const end = polarAngleToCartesian(polarAngle, azimuthAngle, length);
 
-    return <Line start={start} end={end} color="red" />
+    return <Line start={start} end={end} color="white" />
 }
 
 export { LinePolar };
