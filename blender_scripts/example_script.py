@@ -1,4 +1,5 @@
 import bpy
+from math import pi
 
 # Parameters to be passed in
 stl_file_path = "/home/michael/repos/Asteroids/blender_scripts/216kleopatra.stl"
@@ -56,6 +57,25 @@ bpy.data.cameras['Camera'].ortho_scale = camera_ortho_scale
 ''' Import STL file '''
 # Import the STL file
 bpy.ops.import_mesh.stl(filepath=stl_file_path)
+asteroid = bpy.context.object
+
+''' Simple animation '''
+angles = [0, pi, 2 * pi]
+# start with frame 0
+number_of_frame = 0  
+bpy.context.scene.frame_end = 360
+
+for angle in angles:
+
+    # now we will describe frame with number $number_of_frame
+    scene.frame_set(number_of_frame)
+
+    asteroid.rotation_euler[0] = angle
+    asteroid.keyframe_insert(data_path="rotation_euler", index=-1)
+
+    # move next 10 frames forward - Blender will figure out what to do between this time
+    number_of_frame += 360/2
+
 
 
 
