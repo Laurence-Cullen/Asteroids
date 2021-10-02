@@ -5,24 +5,25 @@ import {LinePolar} from "./objects/line/LinePolar";
 import {GridAxis} from "./voxel-editor/GridAxis";
 import {CameraControls} from "./voxel-editor/CameraControls";
 import {useControls} from "../control/control-context/ControlContext";
-
-import "./Scene.scss";
 import {ModelLoader} from "./model-loader/ModelLoader";
 import {Box} from "./objects/box/Box";
+
+import "./Scene.scss";
+import {VoxelEditor} from "./voxel-editor/VoxelEditor";
 
 const Scene: React.FC = () => {
 
     const {
-        rotation
+        rotation,
+        file
     } = useControls();
 
     return (
         <Canvas className="scene">
             <ambientLight />
-            <pointLight position={[10, 10, 10]} />
             <RotatingGroup rotation={rotation}>
                 <Suspense fallback={<Box position={[0, 0, 0]} />}>
-                    <ModelLoader />
+                    {file ? <ModelLoader filename={file}/> : <VoxelEditor /> }
                 </Suspense>
             </RotatingGroup>
             <LinePolar
