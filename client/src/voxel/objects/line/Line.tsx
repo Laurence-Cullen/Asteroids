@@ -14,10 +14,17 @@ declare global {
 
 type LineComponentProps = {
     start: [number, number, number],
-    end: [number, number, number]
+    end: [number, number, number],
+    color: string
 }
 
-const Line: React.FC<LineComponentProps> = ({ start, end }) => {
+const Line: React.FC<LineComponentProps> = (props) => {
+    const {
+        start,
+        end,
+        color
+    } = props;
+
     const geometry = useMemo(() =>
             new THREE.BufferGeometry().setFromPoints(
                 [start, end].map((v) => new THREE.Vector3(...v))
@@ -26,7 +33,7 @@ const Line: React.FC<LineComponentProps> = ({ start, end }) => {
     )
     return (
         <line_ geometry={geometry}>
-            <lineBasicMaterial color="red" />
+            <lineBasicMaterial color={color} />
         </line_>
     )
 }

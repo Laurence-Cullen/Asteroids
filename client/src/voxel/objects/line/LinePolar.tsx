@@ -1,5 +1,6 @@
 import React from 'react';
 import {Line} from "./Line";
+import {polarAngleToCartesian} from "../../../framework/util/PolarAngleToCartesian";
 
 type LinePolarProps = {
     start: [number, number, number];
@@ -16,18 +17,9 @@ const LinePolar: React.FC<LinePolarProps> = (props) => {
         polarAngle
     } = props;
 
-    // x = r*cos(phi)sin(theta)
-    const x = length * Math.cos(azimuthAngle) * Math.sin(polarAngle);
+    const end = polarAngleToCartesian(polarAngle, azimuthAngle, length);
 
-    // y = r*sin(phi)sin(theta)
-    const y = length * Math.sin(azimuthAngle) * Math.sin(polarAngle);
-
-    // z = r*cos(theta)
-    const z = length * Math.cos(azimuthAngle);
-
-    const end: [number, number, number] = [x, y, z];
-
-    return <Line start={start} end={end} />
+    return <Line start={start} end={end} color="red" />
 }
 
 export { LinePolar };

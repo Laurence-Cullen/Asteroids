@@ -5,15 +5,16 @@ import {RotatingGroup} from "../construct/rotating-group/RotatingGroup";
 import {useControls} from "../../control/control-context/ControlContext";
 import {LinePolar} from "../objects/line/LinePolar";
 import {CameraControls} from "./CameraControls";
+import {GridAxis} from "./GridAxis";
 
 import "./VoxelEditor.scss";
 
 const boxPositions: [number, number, number][] = [
-    [-1, 0, 0],
-    [1, 0, 0],
-    [0, 1, 0],
-    [0, 2, 0],
-    [0, 3, 0]
+   [-1, 0, 0],
+   [1, 0, 0],
+   [0, 1, 0],
+   [0, 2, 0],
+   [0, 3, 0]
 ];
 
 
@@ -22,22 +23,23 @@ const VoxelEditor: React.FC<{}> = () => {
         rotation
     } = useControls();
 
-    const boxes = boxPositions.map((position) => <Box position={position} />);
+    const boxes = boxPositions.map((position, idx) => <Box key={idx} position={position} />);
 
     return (
         <Canvas className="voxel-editor">
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
-            <RotatingGroup rotationVector={rotation}>
+            <RotatingGroup rotation={rotation}>
                 <Box position={[0, 0, 0]} color='hotpink'/>
                 {boxes}
             </RotatingGroup>
             <LinePolar
                 start={[0, 0, 0]}
-                length={1000}
-                polarAngle={Math.PI}
-                azimuthAngle={0}
+                length={100}
+                polarAngle={rotation.polar}
+                azimuthAngle={rotation.azimuth}
             />
+            <GridAxis />
             <CameraControls />
         </Canvas>
     );

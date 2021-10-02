@@ -3,10 +3,7 @@ import {Modal} from "../../framework/modal/Modal";
 import {SliderWithLabel} from "../../framework/slider/SliderWithLabel";
 import {useControls} from "../control-context/ControlContext";
 
-const ROTATION_RANGE = 0.25;
-const ROTATION_MIN = -1 * ROTATION_RANGE;
-const ROTATION_MAX = ROTATION_RANGE;
-const ROTATION_STEP = 0.01;
+const ROTATION_STEP = 0.1;
 
 const RotationModal: React.FC<{}> = () => {
     const {
@@ -14,7 +11,11 @@ const RotationModal: React.FC<{}> = () => {
         setRotation
     } = useControls();
 
-    const [rotationX, rotationY, rotationZ] = rotation;
+    const {
+        polar,
+        azimuth,
+        speed
+    } = rotation;
 
     return (
         <Modal
@@ -23,30 +24,42 @@ const RotationModal: React.FC<{}> = () => {
             height={200}
         >
             <SliderWithLabel
-                label="Rotation in X"
-                min={ROTATION_MIN}
-                max={ROTATION_MAX}
-                value={rotationX}
+                label="Polar angle"
+                min={0}
+                max={Math.PI}
+                value={polar}
                 step={ROTATION_STEP}
-                onChange={(newX: number) => setRotation([newX, rotationY, rotationZ])}
+                onChange={(newPolar: number) => setRotation({
+                    polar: newPolar,
+                    azimuth,
+                    speed
+                })}
                 displayValue
             />
             <SliderWithLabel
-                label="Rotation in Y"
-                min={ROTATION_MIN}
-                max={ROTATION_MAX}
-                value={rotationY}
+                label="Azimuth angle"
+                min={0}
+                max={2 * Math.PI}
+                value={azimuth}
                 step={ROTATION_STEP}
-                onChange={(newY: number) => setRotation([rotationX, newY, rotationZ])}
+                onChange={(newAz: number) => setRotation({
+                    polar,
+                    azimuth: newAz,
+                    speed
+                })}
                 displayValue
             />
             <SliderWithLabel
-                label="Rotation in Z"
-                min={ROTATION_MIN}
-                max={ROTATION_MAX}
-                value={rotationZ}
+                label="Speed"
+                min={0}
+                max={Math.PI/2}
+                value={speed}
                 step={ROTATION_STEP}
-                onChange={(newZ: number) => setRotation([rotationX, rotationY, newZ])}
+                onChange={(newSpeed: number) => setRotation({
+                    polar,
+                    azimuth,
+                    speed: newSpeed
+                })}
                 displayValue
             />
         </Modal>

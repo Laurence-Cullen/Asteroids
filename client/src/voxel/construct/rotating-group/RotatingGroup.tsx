@@ -1,26 +1,33 @@
 import React, {MutableRefObject, useRef} from "react";
 import {useFrame} from "@react-three/fiber";
 import * as THREE from 'three';
+import {Rotation} from "../../../control/control-context/ControlContext";
+import {polarAngleToCartesian} from "../../../framework/util/PolarAngleToCartesian";
+import {Vector3} from "three";
 
 type RotatingGroupProps = {
-    rotationVector: [number, number, number]
+    rotation: Rotation
 };
 
 const RotatingGroup: React.FC<RotatingGroupProps> = (props) => {
     const {
         children,
-        rotationVector
+        rotation
     } = props;
 
-    const [x, y, z] = rotationVector;
+    const {
+       polar,
+       azimuth,
+       speed
+    } = rotation;
 
     const ref: MutableRefObject<THREE.Group | null> = useRef(null)
 
     useFrame(() => {
+        const axis = polarAngleToCartesian(polar, azimuth, 1);
+
         if (ref.current !== null && ref.current.rotation !== undefined) {
-            ref.current.rotation.x += x;
-            ref.current.rotation.y += y;
-            ref.current.rotation.z += z;
+            ref.current.rotateOnWorldAxis(new Vector3(...axis).normalize(), speed)
         }
     })
 
@@ -29,10 +36,6 @@ const RotatingGroup: React.FC<RotatingGroupProps> = (props) => {
             {children}
         </group>
     )
-}
-
-RotatingGroup.defaultProps = {
-    rotationVector: [0, 0, 0]
 }
 
 export { RotatingGroup };
