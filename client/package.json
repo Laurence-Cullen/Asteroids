@@ -15,8 +15,10 @@
     "node": ">=14.15.0"
   },
   "dependencies": {
+    "@react-three/fiber": "^7.0.9",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "three": "^0.133.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",

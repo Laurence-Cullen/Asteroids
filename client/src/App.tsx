@@ -1,7 +1,8 @@
 import React from 'react';
+import {VoxelEditor} from "./voxel/voxel-editor/VoxelEditor";
 
 const App: React.FC = () => {
-    return <div>cool app</div>;
+    return <VoxelEditor />;
 };
 
 export { App };

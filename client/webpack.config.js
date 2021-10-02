@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
-const NodemonPlugin = require('nodemon-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
 const SRC_DIR = './src/';
