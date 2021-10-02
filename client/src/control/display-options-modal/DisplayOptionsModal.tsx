@@ -10,6 +10,8 @@ const DisplayOptionsModal: React.FC<ModalProps> = (props) => {
         setDrawVectors
     } = useControls();
 
+
+
     return (
         <Modal {...props}>
             <div>

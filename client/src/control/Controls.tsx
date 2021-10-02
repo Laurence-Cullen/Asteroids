@@ -39,7 +39,7 @@ const Controls: React.FC<{}> = () => {
             />
             <DisplayOptionsModal
                 title="Display options"
-                width={200}
+                width={150}
                 height={75}
                 initialPosition={[10, 450]}
             />
