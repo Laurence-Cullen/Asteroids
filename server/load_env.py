@@ -1,7 +1,10 @@
 import os
+from dotenv import load_dotenv
 
 
 def load_env_variables():
+    load_dotenv()  # take environment variables from .env.
+
     environ = os.environ
 
     names = []
@@ -21,7 +24,7 @@ def load_env_variables():
 
 
 def load_variable(name, required, default, environ: dict):
-    if not (required and name in environ):
+    if required and not name in environ:
         raise EnvironmentError(f"Environment variable {name} is required but not present")
 
     # if not required use env if present otherwise fall back to default
@@ -35,8 +38,6 @@ ENV_VARIABLES = [
     # (name, required, default)
     ("BLENDER_PATH", True, None),  # path to the Blender executable
     ("SCRIPT_PATH", True, None),  # path to script to run inside blender to create .blend file
+    ("RENDER_RESOLUTION", False, "100"),  # number of pixels across to render images too
+    ("FRAMES", False, "360"),  # how many frames to render
 ]
-
-if __name__ == '__main__':
-    environ = load_env_variables()
-    print(environ)
