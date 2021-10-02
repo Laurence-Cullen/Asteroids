@@ -1,18 +1,20 @@
 import bpy
 import math
 
-# Parameters to be passed in
+''' Parameters to be passed in '''
 # stl_file_path = "/home/michael/repos/Asteroids/blender_scripts/216kleopatra.stl"
 stl_file_path = "/home/michael/repos/Asteroids/blender_scripts/gato_3.stl"
-light_x_angle = 1.74533
-light_y_angle = 3.49066
-light_z_angle = 0.5
-camera_ortho_scale = 1
+light_pol = 0.5 * math.pi
+light_azi = 0.5 * math.pi
+axis_pol = 0.32 * math.pi
+axis_azi = 0.79 * math.pi 
+
 
 # Useful shortcut
 scene = bpy.context.scene
 
 # Settings
+camera_ortho_scale = 1.2
 bpy.context.scene.render.resolution_x = 1080
 bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = (0, 0, 0, 1)
 
@@ -49,10 +51,17 @@ dg = bpy.context.evaluated_depsgraph_get()
 dg.update()
 
 # Set light angles
+light_x = math.cos(light_azi) * math.sin(light_pol)
+light_y = math.sin(light_azi) * math.sin(light_pol)
+light_z = 0
+
 bpy.data.objects['Sun'].select_set(True)
-bpy.context.object.rotation_euler[0] = light_x_angle
-bpy.context.object.rotation_euler[1] = light_y_angle
-bpy.context.object.rotation_euler[2] = light_z_angle
+bpy.context.object.rotation_mode = 'AXIS_ANGLE'
+bpy.context.object.rotation_axis_angle[0] = light_pol
+bpy.context.object.rotation_axis_angle[1] = light_x
+bpy.context.object.rotation_axis_angle[2] = light_y
+bpy.context.object.rotation_axis_angle[3] = light_z
+
 bpy.data.objects['Sun'].select_set(False)
 
 ''' Set up camera '''
@@ -91,12 +100,17 @@ asteroid.scale[1] = 1 / encapsulating_radius
 asteroid.scale[2] = 1 / encapsulating_radius
 
 
-
 ''' Simple animation '''
 angles = [0, math.pi, 2 * math.pi]
 # start with frame 0
 number_of_frame = 0  
 bpy.context.scene.frame_end = 360
+
+# Determine angles
+asteroid.rotation_mode = 'AXIS_ANGLE'
+axis_x = math.cos(axis_azi) * math.sin(axis_pol)
+axis_y = math.sin(axis_azi) * math.sin(axis_pol)
+axis_z = math.cos(axis_pol)
 
 
 for angle in angles:
@@ -104,9 +118,12 @@ for angle in angles:
     # now we will describe frame with number $number_of_frame
     scene.frame_set(number_of_frame)
 
-    asteroid.rotation_euler[0] = angle
-    asteroid.rotation_euler[1] = angle
-    asteroid.keyframe_insert(data_path="rotation_euler", index=-1)
+    asteroid.rotation_axis_angle[0] = angle
+    asteroid.rotation_axis_angle[1] = axis_x
+    asteroid.rotation_axis_angle[2] = axis_y
+    asteroid.rotation_axis_angle[3] = axis_z
+
+    asteroid.keyframe_insert(data_path="rotation_axis_angle", index=-1)
 
     # move next 10 frames forward - Blender will figure out what to do between this time
     number_of_frame += int(360/2)
@@ -116,6 +133,8 @@ fcurves = asteroid.animation_data.action.fcurves
 for fcurve in fcurves:
     for kf in fcurve.keyframe_points:
         kf.interpolation = 'LINEAR'
+
+
 
 
 
