@@ -1,13 +1,13 @@
 import React from 'react';
-import {VoxelEditor} from "./voxel/voxel-editor/VoxelEditor";
 import {ControlContextProvider} from "./control/control-context/ControlContext";
 import {Controls} from "./control/Controls";
+import {Scene} from "./scene/Scene";
 
 const App: React.FC = () => {
     return (
         <ControlContextProvider>
             <Controls />
-            <VoxelEditor />
+            <Scene />
         </ControlContextProvider>
     );
 };
