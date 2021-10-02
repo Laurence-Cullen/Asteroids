@@ -3,6 +3,7 @@ import {RotationModal} from "./rotation-modal/RotationModal";
 import {FileUploadModal} from "./file-upload-modal/FileUploadModal";
 import {useControls} from "./control-context/ControlContext";
 import {DisplayOptionsModal} from "./display-options-modal/DisplayOptionsModal";
+import {RenderLightVectorModal} from "./render-light-vector/RenderLightVectorModal";
 
 const Controls: React.FC<{}> = () => {
     const {
@@ -43,6 +44,7 @@ const Controls: React.FC<{}> = () => {
                 height={75}
                 initialPosition={[10, 450]}
             />
+            <RenderLightVectorModal />
         </>
     );
 }

@@ -3,7 +3,7 @@ import {Modal, ModalProps} from "../../framework/modal/Modal";
 import {SliderWithLabel} from "../../framework/slider/SliderWithLabel";
 import {Rotation} from "../control-context/ControlContext";
 
-const ROTATION_STEP = 0.1;
+const ROTATION_STEP = 0.01;
 
 type RotationModalProps = {
     rotation: Rotation,

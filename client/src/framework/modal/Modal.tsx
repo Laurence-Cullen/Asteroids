@@ -9,6 +9,7 @@ type ModalProps = {
     width: number;
     height: number;
     order?: number;
+    reverse?: boolean
 }
 
 const Modal: React.FC<ModalProps> = (props) => {
@@ -26,7 +27,7 @@ const Modal: React.FC<ModalProps> = (props) => {
     const [position, setPosition] = useState<[number, number]>(initialPosition ? initialPosition : [0, 0]);
 
     const [
-        left, top
+        x, top
     ] = position;
 
     const zIndex = order || 1;
@@ -37,15 +38,17 @@ const Modal: React.FC<ModalProps> = (props) => {
         }, false);
     }, [])
 
+    const modalStyle: React.CSSProperties = {
+        top: `${top}px`,
+        left: `${x}px`,
+        visibility: visible ? 'inherit' : 'hidden',
+        zIndex
+    }
+
     return (
         <div
             className="modal"
-            style={{
-                top: `${top}px`,
-                left: `${left}px`,
-                visibility: visible ? 'inherit' : 'hidden',
-                zIndex
-            }}
+            style={modalStyle}
         >
             <div
                 className="modal-header"
@@ -57,9 +60,9 @@ const Modal: React.FC<ModalProps> = (props) => {
                     setVisible(true);
                 }}
             >
-                <div className="modal-title">
+                <i className="modal-title">
                     {title ? title : ''}
-                </div>
+                </i>
                 <div className="modal-expand">
                     <button onClick={() => setExpanded((current) => !current)}>
                         {expanded ? '^' : 'v'}
