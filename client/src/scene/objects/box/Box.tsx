@@ -18,7 +18,7 @@ const Box: React.FC<BoxProps> = (props) => {
     const [hovered, setHover] = useState(false)
 
     const toRender = color ? color : (
-        hovered ? 'hotpink' : 'orange'
+        hovered ? 'hotpink' : 'grey'
     );
 
     return (

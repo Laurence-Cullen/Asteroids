@@ -1,15 +1,23 @@
 import React from "react";
-import {Modal} from "../../framework/modal/Modal";
+import {Modal, ModalProps} from "../../framework/modal/Modal";
 import {SliderWithLabel} from "../../framework/slider/SliderWithLabel";
-import {useControls} from "../control-context/ControlContext";
+import {Rotation} from "../control-context/ControlContext";
 
 const ROTATION_STEP = 0.1;
 
-const RotationModal: React.FC<{}> = () => {
+type RotationModalProps = {
+    rotation: Rotation,
+    setRotation: (newRotation: Rotation) => void;
+    renderSpeedSlider?: boolean
+} & ModalProps;
+
+const RotationModal: React.FC<RotationModalProps> = (props) => {
     const {
         rotation,
-        setRotation
-    } = useControls();
+        setRotation,
+        renderSpeedSlider,
+        ...modalProps
+    } = props;
 
     const {
         polar,
@@ -19,10 +27,7 @@ const RotationModal: React.FC<{}> = () => {
 
     return (
         <Modal
-            title="Rotation"
-            width={300}
-            height={150}
-            initialPosition={[10, 10]}
+            {...modalProps}
         >
             <SliderWithLabel
                 label="Polar angle"
@@ -50,19 +55,21 @@ const RotationModal: React.FC<{}> = () => {
                 })}
                 displayValue
             />
-            <SliderWithLabel
-                label="Speed"
-                min={0}
-                max={Math.PI/2}
-                value={speed}
-                step={ROTATION_STEP}
-                onChange={(newSpeed: number) => setRotation({
-                    polar,
-                    azimuth,
-                    speed: newSpeed
-                })}
-                displayValue
-            />
+            {renderSpeedSlider &&
+                <SliderWithLabel
+                    label="Speed"
+                    min={0}
+                    max={Math.PI / 2}
+                    value={speed}
+                    step={ROTATION_STEP}
+                    onChange={(newSpeed: number) => setRotation({
+                        polar,
+                        azimuth,
+                        speed: newSpeed
+                    })}
+                    displayValue
+                />
+            }
         </Modal>
     );
 }

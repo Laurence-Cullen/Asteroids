@@ -30,7 +30,7 @@ const SliderWithLabel: React.FC<SliderWithLabelProps> = (props) => {
                 </div>
                 {displayValue &&
                     <div className="slider-value">
-                        {value}
+                        {Math.round(Number(value) * 100)/100}
                     </div>
                 }
             </div>

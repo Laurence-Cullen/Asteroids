@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
+import classNames from "classnames";
 
 import "./Modal.scss";
-import classNames from "classnames";
 
 type ModalProps = {
     title?: string;
@@ -82,4 +82,4 @@ const Modal: React.FC<ModalProps> = (props) => {
     );
 }
 
-export { Modal };
+export { Modal, ModalProps };
