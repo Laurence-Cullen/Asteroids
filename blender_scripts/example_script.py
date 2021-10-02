@@ -82,9 +82,6 @@ bpy.context.object.location[0] = 0
 bpy.context.object.location[1] = 0
 bpy.context.object.location[2] = 0
 
-
-
-
 # Find size of asteroid 
 encapsulating_radius = math.sqrt(asteroid.dimensions.x**2 + asteroid.dimensions.y**2 + asteroid.dimensions.z**2)
 
