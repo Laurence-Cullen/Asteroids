@@ -1,0 +1,32 @@
+$color: white;
+$background: black;
+
+.modal {
+  color: $color;
+  position: absolute;
+  border: 1px solid $color;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+}
+
+.modal-header {
+  border-bottom: 1px solid $color;
+  display: flex;
+  flex-direction: row;
+}
+
+.modal-title {
+  flex: 1 1;
+}
+
+.modal-expand {
+  border: 1px solid $color;
+}
+
+.modal-content {
+  height: 0;
+  will-change: height;
+  transition: height ease-in-out .25s;
+  overflow: hidden;
+}

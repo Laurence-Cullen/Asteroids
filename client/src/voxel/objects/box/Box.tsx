@@ -1,8 +1,8 @@
 import React, {MutableRefObject, useRef, useState} from "react";
-import {MeshProps, ThreeEvent, useFrame} from "@react-three/fiber";
+import {MeshProps, ThreeEvent} from "@react-three/fiber";
 
 type BoxProps = {
-    position: number[]
+    position: [number, number, number]
 };
 
 const Box: React.FC<BoxProps> = (props) => {
@@ -14,13 +14,6 @@ const Box: React.FC<BoxProps> = (props) => {
 
     const [hovered, setHover] = useState(false)
     const [active, setActive] = useState(false)
-
-    // Subscribe this component to the render-loop, rotate the mesh every frame
-    useFrame(() => {
-        if (ref.current !== null) {
-            ref.current.rotation.x += 0.01
-        }
-    })
 
     return (
         <mesh

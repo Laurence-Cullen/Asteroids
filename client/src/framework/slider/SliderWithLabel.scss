@@ -1,0 +1,13 @@
+.slider-with-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.slider-container {
+  display: flex;
+  flex-direction: row;
+
+  .slider {
+    flex: 1 1;
+  }
+}
