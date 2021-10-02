@@ -26,7 +26,7 @@ const ControlContextDefaultValues: ControlContext = {
         speed: 0.01
     },
     setRotation: () => {},
-    file: null,
+    file: './216kleopatra.stl',
     setFile: () => {},
     lightDirection: {
         polar: Math.PI/8,
