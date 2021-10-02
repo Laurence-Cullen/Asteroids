@@ -2,7 +2,8 @@ import bpy
 import math
 
 # Parameters to be passed in
-stl_file_path = "/home/michael/repos/Asteroids/blender_scripts/216kleopatra.stl"
+# stl_file_path = "/home/michael/repos/Asteroids/blender_scripts/216kleopatra.stl"
+stl_file_path = "/home/michael/repos/Asteroids/blender_scripts/gato_3.stl"
 light_x_angle = 1.74533
 light_y_angle = 3.49066
 light_z_angle = 0.5
@@ -72,7 +73,17 @@ scene.camera.rotation_euler[2] = 0
 ''' Import STL file '''
 # Import the STL file
 bpy.ops.import_mesh.stl(filepath=stl_file_path)
+
 asteroid = bpy.context.object
+
+# Move centre of mass to (0, 0, 0)
+bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_VOLUME')
+bpy.context.object.location[0] = 0
+bpy.context.object.location[1] = 0
+bpy.context.object.location[2] = 0
+
+
+
 
 # Find size of asteroid 
 encapsulating_radius = math.sqrt(asteroid.dimensions.x**2 + asteroid.dimensions.y**2 + asteroid.dimensions.z**2)
