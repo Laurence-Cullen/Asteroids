@@ -1,5 +1,12 @@
 import bpy
 
+# Parameters to be passed in
+stl_file_path = "/home/michael/repos/Asteroids/blender_scripts/216kleopatra.stl"
+light_x_angle = 1.74533
+light_y_angle = 3.49066
+light_z_angle = 0.5
+camera_ortho_scale = 17.1012
+
 # Useful shortcut
 scene = bpy.context.scene
 
@@ -36,22 +43,20 @@ dg.update()
 
 # Set light angles
 bpy.data.objects['Sun'].select_set(True)
-bpy.context.object.rotation_euler[0] = 1.74533
-bpy.context.object.rotation_euler[1] = 3.49066
-bpy.context.object.rotation_euler[2] = 0.5
+bpy.context.object.rotation_euler[0] = light_x_angle
+bpy.context.object.rotation_euler[1] = light_y_angle
+bpy.context.object.rotation_euler[2] = light_z_angle
 
 
 ''' Set up camera '''
 bpy.data.cameras['Camera'].type = 'ORTHO'
-bpy.data.cameras['Camera'].ortho_scale = 17.1012
-
+bpy.data.cameras['Camera'].ortho_scale = camera_ortho_scale
 
 
 ''' Import STL file '''
 # Import the STL file
-bpy.ops.import_mesh.stl(filepath="/home/michael/repos/Asteroids/blender_scripts/216kleopatra.stl")
+bpy.ops.import_mesh.stl(filepath=stl_file_path)
 
-bpy.context.space_data.params.filename = "test.blend"
 
 
 
