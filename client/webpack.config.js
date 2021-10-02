@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const NodemonPlugin = require('nodemon-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
 const SRC_DIR = './src/';
@@ -45,7 +46,8 @@ module.exports = {
         new HtmlWebpackPlugin({template: SRC_DIR + 'index.html'}),
         new MiniCssExtractPlugin({ filename: "style.css" })
     ],
-    devServer:{
+    devServer: {
+        static: './dist',
         port: 9000
     },
     mode : devMode ? 'development' : 'production'
