@@ -1,9 +1,10 @@
 import React from 'react'
-import { Canvas } from '@react-three/fiber'
+import {Canvas} from '@react-three/fiber'
 import {Box} from "../objects/box/Box";
 import {RotatingGroup} from "../construct/rotating-group/RotatingGroup";
 import {useControls} from "../../control/control-context/ControlContext";
 import {LinePolar} from "../objects/line/LinePolar";
+import {CameraControls} from "./CameraControls";
 
 import "./VoxelEditor.scss";
 
@@ -14,6 +15,7 @@ const boxPositions: [number, number, number][] = [
     [0, 2, 0],
     [0, 3, 0]
 ];
+
 
 const VoxelEditor: React.FC<{}> = () => {
     const {
@@ -34,8 +36,9 @@ const VoxelEditor: React.FC<{}> = () => {
                 start={[0, 0, 0]}
                 length={1000}
                 polarAngle={Math.PI}
-                azimuthAngle={Math.PI/2}
+                azimuthAngle={0}
             />
+            <CameraControls />
         </Canvas>
     );
 }

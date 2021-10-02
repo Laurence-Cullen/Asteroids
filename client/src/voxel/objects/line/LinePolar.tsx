@@ -26,7 +26,7 @@ const LinePolar: React.FC<LinePolarProps> = (props) => {
     const z = length * Math.cos(azimuthAngle);
 
     const end: [number, number, number] = [x, y, z];
-    
+
     return <Line start={start} end={end} />
 }
 
