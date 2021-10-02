@@ -33,7 +33,7 @@ const LightCurveModal: React.FC<LightCurveData> = (props) => {
             title="Rendered light curve"
             width={1000}
             height={500}
-            initialPosition={[window.screen.width - 1010, 100]}
+            initialPosition={[document.body.clientWidth - 1010, 100]}
         >
             <Line data={data} options={options} />
         </Modal>
