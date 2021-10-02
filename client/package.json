@@ -1,0 +1,36 @@
+{
+  "name": "voxsteroid",
+  "version": "1.0.0",
+  "description": "Voxel asteroid light curve",
+  "main": "index.js",
+  "repository": "https://github.com/Laurence-Cullen/Asteroids.git",
+  "author": "jamjar919,Laurence-Cullen,mnegus",
+  "license": "UNLICENCED",
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-react": "^7.14.5",
+    "css-loader": "^6.3.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.3.0",
+    "path": "^0.12.7",
+    "sass-loader": "^12.1.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.3",
+    "webpack": "^5.56.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.3.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/react"
+    ]
+  }
+}
