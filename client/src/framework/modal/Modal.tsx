@@ -52,14 +52,19 @@ const Modal: React.FC<ModalProps> = (props) => {
         >
             <div
                 className="modal-header"
-                draggable={true}
-                onDragEnter={() => setVisible(false)}
-                onDragEnd={(e) => {
-                    e.preventDefault();
-                    setPosition([e.clientX, e.clientY]);
-                    setVisible(true);
-                }}
             >
+                <div
+                    className="modal-drag-icon"
+                    draggable={true}
+                    onDragEnter={() => setVisible(false)}
+                    onDragEnd={(e) => {
+                        e.preventDefault();
+                        setPosition([e.clientX, e.clientY]);
+                        setVisible(true);
+                    }}
+                >
+                    ✥
+                </div>
                 <i className="modal-title">
                     {title ? title : ''}
                 </i>

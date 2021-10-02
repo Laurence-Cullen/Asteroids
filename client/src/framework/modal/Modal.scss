@@ -18,10 +18,14 @@ $background: black;
 
 .modal-title {
   flex: 1 1;
+  padding: 5px;
 }
 
 .modal-expand {
-  border: 1px solid $color;
+  border-left: 1px solid $color;
+  button {
+    height: 100%;
+  }
 }
 
 .modal-content {
@@ -29,4 +33,10 @@ $background: black;
   will-change: height;
   transition: height ease-in-out .25s;
   overflow: hidden;
+}
+
+.modal-drag-icon {
+  cursor: move;
+  border-right: 1px solid $color;
+  padding: 5px;
 }
