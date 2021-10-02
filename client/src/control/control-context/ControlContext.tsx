@@ -13,23 +13,31 @@ type ControlContext = {
     setFile: (fileUrl: string) => void,
     lightDirection: Rotation;
     setLightDirection: (newRotation: Rotation) => void;
+    drawGrid: boolean;
+    setDrawGrid: (val: boolean) => void;
+    drawVectors: boolean;
+    setDrawVectors: (val: boolean) => void;
 }
 
 const ControlContextDefaultValues: ControlContext = {
     rotation: {
-        polar: Math.PI/8,
-        azimuth: Math.PI/4,
+        polar: Math.random() * Math.PI,
+        azimuth: Math.random() * Math.PI * 2,
         speed: 0.01
     },
     setRotation: () => {},
     file: null,
     setFile: () => {},
     lightDirection: {
-        polar: Math.PI/2,
-        azimuth: Math.PI,
+        polar: Math.PI/8,
+        azimuth: Math.PI/4,
         speed: 1
     },
-    setLightDirection: () => {}
+    setLightDirection: () => {},
+    drawGrid: false,
+    setDrawGrid: () => {},
+    drawVectors: false,
+    setDrawVectors: () => {}
 }
 
 const Context = React.createContext<ControlContext>(ControlContextDefaultValues);
@@ -39,7 +47,9 @@ const ControlContextProvider: React.FC = (props) => {
 
     const [rotation, setRotation] = useState<Rotation>(ControlContextDefaultValues.rotation);
     const [file, setFile] = useState<string | null>(ControlContextDefaultValues.file);
-    const [lightDirection, setLightDirection] = useState<Rotation>(ControlContextDefaultValues.rotation);
+    const [lightDirection, setLightDirection] = useState<Rotation>(ControlContextDefaultValues.lightDirection);
+    const [drawGrid, setDrawGrid] = useState<boolean>(ControlContextDefaultValues.drawGrid);
+    const [drawVectors, setDrawVectors] = useState<boolean>(ControlContextDefaultValues.drawVectors);
 
     const context = useMemo(() => {
        return {
@@ -48,9 +58,13 @@ const ControlContextProvider: React.FC = (props) => {
            file,
            setFile,
            lightDirection,
-           setLightDirection
+           setLightDirection,
+           drawGrid,
+           setDrawGrid,
+           drawVectors,
+           setDrawVectors
        }
-    }, [rotation, file, lightDirection]);
+    }, [rotation, file, lightDirection, drawGrid, drawVectors]);
 
     return (<Context.Provider value={context}>{children}</Context.Provider>)
 };

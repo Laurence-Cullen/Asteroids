@@ -59,9 +59,9 @@ const RotationModal: React.FC<RotationModalProps> = (props) => {
                 <SliderWithLabel
                     label="Speed"
                     min={0}
-                    max={Math.PI / 2}
+                    max={1}
                     value={speed}
-                    step={ROTATION_STEP}
+                    step={0.01}
                     onChange={(newSpeed: number) => setRotation({
                         polar,
                         azimuth,

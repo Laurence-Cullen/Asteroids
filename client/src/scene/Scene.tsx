@@ -18,7 +18,9 @@ const Scene: React.FC = () => {
     const {
         rotation,
         lightDirection,
-        file
+        file,
+        drawVectors,
+        drawGrid
     } = useControls();
 
     return (
@@ -33,13 +35,26 @@ const Scene: React.FC = () => {
                 polarAngle={lightDirection.polar}
                 azimuthAngle={lightDirection.azimuth}
             />
-            <LinePolar
-                start={[0, 0, 0]}
-                length={100}
-                polarAngle={rotation.polar}
-                azimuthAngle={rotation.azimuth}
-            />
-            <GridAxis />
+            {
+                drawVectors &&
+                (
+                    <>
+                        <LinePolar
+                            start={[0, 0, 0]}
+                            length={100}
+                            polarAngle={lightDirection.polar}
+                            azimuthAngle={lightDirection.azimuth}
+                        />
+                        <LinePolar
+                            start={[0, 0, 0]}
+                            length={10}
+                            polarAngle={rotation.polar}
+                            azimuthAngle={rotation.azimuth}
+                        />
+                    </>
+                )
+            }
+            {drawGrid && <GridAxis/>}
             <CameraControls />
             <Effects />
         </Canvas>
