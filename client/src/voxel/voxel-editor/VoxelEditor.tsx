@@ -3,6 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import {Box} from "../objects/box/Box";
 import {RotatingGroup} from "../construct/rotating-group/RotatingGroup";
 import {useControls} from "../../control/control-context/ControlContext";
+import {LinePolar} from "../objects/line/LinePolar";
 
 import "./VoxelEditor.scss";
 
@@ -26,9 +27,15 @@ const VoxelEditor: React.FC<{}> = () => {
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
             <RotatingGroup rotationVector={rotation}>
-                <Box position={[0, 0, 0]} />
+                <Box position={[0, 0, 0]} color='hotpink'/>
                 {boxes}
             </RotatingGroup>
+            <LinePolar
+                start={[0, 0, 0]}
+                length={1000}
+                polarAngle={Math.PI}
+                azimuthAngle={Math.PI/2}
+            />
         </Canvas>
     );
 }

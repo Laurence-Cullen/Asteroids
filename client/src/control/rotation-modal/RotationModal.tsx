@@ -50,7 +50,6 @@ const RotationModal: React.FC<{}> = () => {
                 displayValue
             />
         </Modal>
-
     );
 }
 

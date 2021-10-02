@@ -1,33 +1,39 @@
 import React, {MutableRefObject, useRef, useState} from "react";
-import {MeshProps, ThreeEvent} from "@react-three/fiber";
+import {ThreeEvent} from "@react-three/fiber";
+import * as THREE from 'three';
 
 type BoxProps = {
-    position: [number, number, number]
+    position: [number, number, number],
+    color?: string;
 };
 
 const Box: React.FC<BoxProps> = (props) => {
     const {
-        position
+        position,
+        color
     } = props;
 
-    const ref: MutableRefObject<MeshProps | null> = useRef(null)
+    const ref: MutableRefObject<THREE.Mesh | null> = useRef(null)
 
     const [hovered, setHover] = useState(false)
-    const [active, setActive] = useState(false)
+
+    const toRender = color ? color : (
+        hovered ? 'hotpink' : 'orange'
+    );
 
     return (
         <mesh
             position={position}
             ref={ref}
-            scale={active ? 1.5 : 1}
             onClick={(event: ThreeEvent<MouseEvent>) => {
-                setActive(!active);
                 console.log(event);
             }}
             onPointerOver={() => setHover(true)}
             onPointerOut={() => setHover(false)}>
             <boxGeometry args={[1, 1, 1]} />
-            <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
+            <meshStandardMaterial
+                color={toRender}
+            />
         </mesh>
     )
 }
