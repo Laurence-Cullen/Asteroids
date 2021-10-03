@@ -10,15 +10,13 @@ const ASTEROID_FILE_LIST = [
     './asteroids/golevka.stl',
     './asteroids/hw1.stl',
     './asteroids/mithra.stl',
-    // './asteroids/rock1.stl',
-    // './asteroids/rock2.stl',
-    // './asteroids/rock3.stl',
     './asteroids/toutatis.stl',
     './asteroids/1620geographos.stl',
     './asteroids/utahteapot.stl',
     './asteroids/voyager.stl',
     './asteroids/football.stl',
-    './asteroids/sphere.stl'
+    './asteroids/sphere.stl',
+    './asteroids/comet-67P-CG.stl'
 ];
 
 const FileUploadModal: React.FC<ModalProps> = (props) => {
