@@ -1,5 +1,7 @@
 # Voxsteroid
 
+[![voxteroid-demo](https://user-images.githubusercontent.com/5647724/135775155-8b2057fd-4946-4148-8571-ecbe5eb76a8c.gif)](https://voxsteroid-io6i7.ondigitalocean.app/)
+
 ## [View live!](https://voxsteroid-io6i7.ondigitalocean.app/)
 
 Made for the 2021 Space Apps challenge, by team [Cambridge Asteroids](https://2021.spaceappschallenge.org/challenges/statements/when-light-curves-throw-us-curve-balls/teams/cambridge-asteroids/project). 
