@@ -10,6 +10,7 @@ import {Box} from "./objects/box/Box";
 import {VoxelEditor} from "./voxel-editor/VoxelEditor";
 import {Sun} from "./objects/sun/Sun";
 import {Effects} from "./effect/Effects";
+import {Background} from "./objects/background/Background";
 
 import "./Scene.scss";
 
@@ -25,6 +26,7 @@ const Scene: React.FC = () => {
 
     return (
         <Canvas className="scene">
+            <Background />
             <RotatingGroup rotation={rotation}>
                 <Suspense fallback={<Box position={[0, 0, 0]} />}>
                     {file ? <ModelLoader filename={file}/> : <VoxelEditor /> }
