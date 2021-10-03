@@ -6,6 +6,11 @@ type FileEventTarget = HTMLInputElement & { files: FileList };
 
 const ASTEROID_FILE_LIST = [
     './asteroids/216kleopatra.stl',
+    './asteroids/bella-the-cat.stl',
+    './asteroids/golevka.stl',
+    './asteroids/hw1.stl',
+    './asteroids/mithra.stl',
+    './asteroids/toutatis.stl',
 ];
 
 const FileUploadModal: React.FC<ModalProps> = (props) => {
