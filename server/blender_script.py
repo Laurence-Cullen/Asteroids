@@ -126,8 +126,9 @@ for fcurve in fcurves:
         kf.interpolation = 'LINEAR'
 
 # configure rendering
-bpy.context.scene.eevee.taa_render_samples = 1
-bpy.context.scene.eevee.taa_samples = 1
+bpy.context.scene.render.engine = 'CYCLES'
+bpy.context.scene.cycles.samples = 1
+bpy.context.scene.cycles.preview_samples = 1
 bpy.context.scene.render.resolution_x = {{ resolution }}
 bpy.context.scene.render.resolution_y = {{ resolution }}
 bpy.context.scene.render.image_settings.color_mode = 'BW'
