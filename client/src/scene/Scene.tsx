@@ -13,6 +13,7 @@ import {Effects} from "./effect/Effects";
 import {Background} from "./objects/background/Background";
 
 import "./Scene.scss";
+import {Cassini} from "./objects/cassini/Cassini";
 
 const Scene: React.FC = () => {
 
@@ -28,6 +29,7 @@ const Scene: React.FC = () => {
     return (
         <Canvas className="scene">
             <Background drawBackground={drawBackground} />
+            <Cassini />
             <RotatingGroup rotation={rotation}>
                 <Suspense fallback={<Box position={[0, 0, 0]} />}>
                     {file ? <ModelLoader filename={file}/> : <VoxelEditor /> }

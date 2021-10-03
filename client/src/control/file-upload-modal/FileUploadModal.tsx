@@ -4,7 +4,7 @@ import {useControls} from "../control-context/ControlContext";
 
 type FileEventTarget = HTMLInputElement & { files: FileList };
 
-const ASTEROID_FILE_LIST = [
+const FILE_LIST = [
     './asteroids/216kleopatra.stl',
     './asteroids/bella-the-cat.stl',
     './asteroids/golevka.stl',
@@ -13,7 +13,7 @@ const ASTEROID_FILE_LIST = [
     './asteroids/toutatis.stl',
     './asteroids/1620geographos.stl',
     './asteroids/utahteapot.stl',
-    './asteroids/voyager.stl',
+    './spacecraft/voyager.stl',
     './asteroids/football.stl',
     './asteroids/sphere.stl',
     './asteroids/comet-67P-CG.stl'
@@ -33,13 +33,13 @@ const FileUploadModal: React.FC<ModalProps> = (props) => {
 
     const handleLoadExample = (e: ChangeEvent<HTMLSelectElement>) => {
         const val = e.target.value;
-        if (ASTEROID_FILE_LIST.includes(val)) {
+        if (FILE_LIST.includes(val)) {
             setFile(val);
         }
     }
 
     let selectedFile = "custom-file";
-    if (file && ASTEROID_FILE_LIST.includes(file)) {
+    if (file && FILE_LIST.includes(file)) {
         selectedFile = file;
     }
 
@@ -54,7 +54,7 @@ const FileUploadModal: React.FC<ModalProps> = (props) => {
                 <select onChange={handleLoadExample} value={selectedFile}>
                     <option value="custom-file">Select file</option>
                     {
-                        ASTEROID_FILE_LIST.map((name) =>
+                        FILE_LIST.map((name) =>
                             <option key={name} value={name}>{name}</option>
                         )
                     }
