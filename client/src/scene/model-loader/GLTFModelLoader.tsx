@@ -7,18 +7,20 @@ type ModelLoaderProps = {
     filename: string;
     position: [number, number, number];
     rotation: THREE.Euler,
+    scale: number
 }
 
 const GLTFModelLoader: React.FC<ModelLoaderProps> = (props) => {
     const {
         filename,
         position,
-        rotation
+        rotation,
+        scale
     } = props;
 
     const gltf = useLoader(GLTFLoader, filename)
     return (
-        <group rotation={rotation} position={position}>
+        <group rotation={rotation} position={position} scale={scale}>
             <primitive object={gltf.scene}/>
         </group>
     )

@@ -16,6 +16,7 @@ const Cassini: React.FC<{}> = () => {
                 filename={'./spacecraft/cassini.gltf'}
                 position={CAMERA_POSITION}
                 rotation={new Euler(Math.PI, 0, 0)} // Rotate it so it points at the object, so it looks nice :)
+                scale={.5}
             />
         </Suspense>
     )
