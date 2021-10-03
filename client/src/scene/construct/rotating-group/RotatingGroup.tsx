@@ -32,11 +32,13 @@ const RotatingGroup: React.FC<RotatingGroupProps> = (props) => {
         }
     }, [polar, azimuth])
 
+
+    const rotationVector = new Vector3(0, 0, 0);
     useFrame(() => {
         const axis = polarAngleToCartesian(polar, azimuth, 1);
 
         if (ref.current !== null && ref.current.rotation !== undefined) {
-            ref.current.rotateOnWorldAxis(new Vector3(...axis).normalize(), speed)
+            ref.current.rotateOnWorldAxis(rotationVector.set(...axis), speed)
         }
     })
 

@@ -10,6 +10,9 @@ const ASTEROID_FILE_LIST = [
     './asteroids/golevka.stl',
     './asteroids/hw1.stl',
     './asteroids/mithra.stl',
+    // './asteroids/rock1.stl',
+    // './asteroids/rock2.stl',
+    // './asteroids/rock3.stl',
     './asteroids/toutatis.stl',
 ];
 
