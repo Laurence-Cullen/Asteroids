@@ -22,6 +22,8 @@ const ModelLoader: React.FC<ModelLoaderProps> = (props) => {
 
     useLayoutEffect(() => {
         if (ref.current) {
+            ref.current.scale.set(1, 1, 1);
+
             const boundingBox = new THREE.Box3().setFromObject(ref.current);
             let result: Vector3 = new THREE.Vector3();
             boundingBox.getSize(result);
@@ -46,7 +48,7 @@ const ModelLoader: React.FC<ModelLoaderProps> = (props) => {
 
             ref.current.scale.set(scaleFactor, scaleFactor, scaleFactor);
         }
-    }, [ref.current])
+    }, [ref.current, stl])
 
     return (
         <>

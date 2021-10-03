@@ -7,10 +7,10 @@ const DisplayOptionsModal: React.FC<ModalProps> = (props) => {
         drawGrid,
         setDrawGrid,
         drawVectors,
-        setDrawVectors
+        setDrawVectors,
+        drawBackground,
+        setDrawBackground
     } = useControls();
-
-
 
     return (
         <Modal {...props}>
@@ -24,6 +24,12 @@ const DisplayOptionsModal: React.FC<ModalProps> = (props) => {
                 <label>
                     Draw vectors
                     <input type="checkbox" checked={drawVectors} onChange={(e) => setDrawVectors(e.target.checked)} />
+                </label>
+            </div>
+            <div>
+                <label>
+                    Draw background
+                    <input type="checkbox" checked={drawBackground} onChange={(e) => setDrawBackground(e.target.checked)} />
                 </label>
             </div>
         </Modal>

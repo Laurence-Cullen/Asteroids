@@ -21,12 +21,13 @@ const Scene: React.FC = () => {
         lightDirection,
         file,
         drawVectors,
-        drawGrid
+        drawGrid,
+        drawBackground
     } = useControls();
 
     return (
         <Canvas className="scene">
-            <Background />
+            <Background drawBackground={drawBackground} />
             <RotatingGroup rotation={rotation}>
                 <Suspense fallback={<Box position={[0, 0, 0]} />}>
                     {file ? <ModelLoader filename={file}/> : <VoxelEditor /> }

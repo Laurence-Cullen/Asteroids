@@ -1,17 +1,24 @@
-import React, {useLayoutEffect} from "react";
-import {CubeTextureLoader} from "three";
+import React, {useLayoutEffect, useMemo} from "react";
+import {CubeTexture, CubeTextureLoader} from "three";
 import {useThree} from "@react-three/fiber";
 
 const BACKGROUND_FILE_PATH = './shannon-stars.jpg';
 
-const Background: React.FC<{}> = () => {
+type BackgroundProps = {
+    drawBackground?: boolean
+}
+
+const Background: React.FC<BackgroundProps> = (props) => {
     const {
         scene
     } = useThree();
 
-    useLayoutEffect(() => {
-        const loader = new CubeTextureLoader();
-        scene.background = loader.load([
+    const {
+        drawBackground
+    } = props;
+
+    const cubeTexture: CubeTexture = useMemo(() => {
+        return new CubeTextureLoader().load([
             BACKGROUND_FILE_PATH,
             BACKGROUND_FILE_PATH,
             BACKGROUND_FILE_PATH,
@@ -20,6 +27,14 @@ const Background: React.FC<{}> = () => {
             BACKGROUND_FILE_PATH
         ]);
     }, []);
+
+    useLayoutEffect(() => {
+        if (drawBackground) {
+            scene.background = cubeTexture;
+        } else {
+            scene.background = null;
+        }
+    }, [drawBackground]);
 
     return null;
 }

@@ -17,6 +17,8 @@ type ControlContext = {
     setDrawGrid: (val: boolean) => void;
     drawVectors: boolean;
     setDrawVectors: (val: boolean) => void;
+    drawBackground: boolean;
+    setDrawBackground: (val: boolean) => void;
 }
 
 const ControlContextDefaultValues: ControlContext = {
@@ -37,7 +39,9 @@ const ControlContextDefaultValues: ControlContext = {
     drawGrid: false,
     setDrawGrid: () => {},
     drawVectors: false,
-    setDrawVectors: () => {}
+    setDrawVectors: () => {},
+    drawBackground: true,
+    setDrawBackground: () => {}
 }
 
 const Context = React.createContext<ControlContext>(ControlContextDefaultValues);
@@ -50,6 +54,7 @@ const ControlContextProvider: React.FC = (props) => {
     const [lightDirection, setLightDirection] = useState<Rotation>(ControlContextDefaultValues.lightDirection);
     const [drawGrid, setDrawGrid] = useState<boolean>(ControlContextDefaultValues.drawGrid);
     const [drawVectors, setDrawVectors] = useState<boolean>(ControlContextDefaultValues.drawVectors);
+    const [drawBackground, setDrawBackground] = useState<boolean>(ControlContextDefaultValues.drawBackground);
 
     const context = useMemo(() => {
        return {
@@ -62,9 +67,11 @@ const ControlContextProvider: React.FC = (props) => {
            drawGrid,
            setDrawGrid,
            drawVectors,
-           setDrawVectors
+           setDrawVectors,
+           drawBackground,
+           setDrawBackground
        }
-    }, [rotation, file, lightDirection, drawGrid, drawVectors]);
+    }, [rotation, file, lightDirection, drawGrid, drawVectors, drawBackground]);
 
     return (<Context.Provider value={context}>{children}</Context.Provider>)
 };
