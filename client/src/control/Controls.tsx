@@ -49,7 +49,7 @@ const Controls: React.FC<{}> = () => {
                 title="Camera control"
                 width={300}
                 height={50}
-                initialPosition={[10, 600]}
+                initialPosition={[10, 620]}
             />
             <RenderLightVectorModal />
         </>
