@@ -1,4 +1,4 @@
-import React, {MutableRefObject, useEffect, useRef} from "react";
+import React, {MutableRefObject, useEffect, useMemo, useRef} from "react";
 import {useFrame} from "@react-three/fiber";
 import * as THREE from 'three';
 import {Rotation} from "../../../control/control-context/ControlContext";
@@ -23,7 +23,7 @@ const RotatingGroup: React.FC<RotatingGroupProps> = (props) => {
 
     const ref: MutableRefObject<THREE.Group | null> = useRef(null)
 
-    // Reset orientation on
+    // Reset orientation on reset
     useEffect(() => {
         if (ref.current !== null && ref.current.rotation !== undefined) {
             ref.current.rotation.x = 0;
@@ -32,11 +32,16 @@ const RotatingGroup: React.FC<RotatingGroupProps> = (props) => {
         }
     }, [polar, azimuth])
 
-    useFrame(() => {
-        const axis = polarAngleToCartesian(polar, azimuth, 1);
 
+    // Recompute rotation vector if it changes
+    const rotationVector: Vector3 = useMemo(() => {
+        const axis = polarAngleToCartesian(polar, azimuth, 1);
+        return new Vector3(...axis);
+    }, [polar, azimuth])
+
+    useFrame(() => {
         if (ref.current !== null && ref.current.rotation !== undefined) {
-            ref.current.rotateOnWorldAxis(new Vector3(...axis).normalize(), speed)
+            ref.current.rotateOnWorldAxis(rotationVector, speed)
         }
     })
 

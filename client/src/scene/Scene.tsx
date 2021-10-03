@@ -10,6 +10,7 @@ import {Box} from "./objects/box/Box";
 import {VoxelEditor} from "./voxel-editor/VoxelEditor";
 import {Sun} from "./objects/sun/Sun";
 import {Effects} from "./effect/Effects";
+import {Background} from "./objects/background/Background";
 
 import "./Scene.scss";
 
@@ -20,18 +21,20 @@ const Scene: React.FC = () => {
         lightDirection,
         file,
         drawVectors,
-        drawGrid
+        drawGrid,
+        drawBackground
     } = useControls();
 
     return (
         <Canvas className="scene">
+            <Background drawBackground={drawBackground} />
             <RotatingGroup rotation={rotation}>
                 <Suspense fallback={<Box position={[0, 0, 0]} />}>
                     {file ? <ModelLoader filename={file}/> : <VoxelEditor /> }
                 </Suspense>
             </RotatingGroup>
             <Sun
-                distance={100}
+                distance={1000}
                 polarAngle={lightDirection.polar}
                 azimuthAngle={lightDirection.azimuth}
             />
