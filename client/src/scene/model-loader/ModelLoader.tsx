@@ -20,6 +20,7 @@ const ModelLoader: React.FC<ModelLoaderProps> = (props) => {
 
     const ref: MutableRefObject<Object3D | null> = useRef(null)
 
+    // Scale the incoming files so they're around the same size
     useLayoutEffect(() => {
         if (ref.current) {
             ref.current.scale.set(1, 1, 1);
@@ -43,8 +44,6 @@ const ModelLoader: React.FC<ModelLoaderProps> = (props) => {
             } else if (zSize >= xSize && zSize >= ySize) {
                 scaleFactor = MODEL_SIZE / zSize;
             }
-
-            console.log(scaleFactor);
 
             ref.current.scale.set(scaleFactor, scaleFactor, scaleFactor);
         }
