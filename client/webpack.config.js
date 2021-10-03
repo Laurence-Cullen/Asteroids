@@ -48,5 +48,5 @@ module.exports = env => ({
         static: './dist',
         port: 9000
     },
-    mode : env === 'production' ? 'production' : 'development'
+    mode: 'production'
 });
