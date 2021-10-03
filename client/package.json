@@ -8,7 +8,7 @@
   "license": "UNLICENCED",
   "scripts": {
     "test": "jest",
-    "build": "npx webpack",
+    "build": "npx webpack --env=production",
     "build:dev": "npx webpack serve --open"
   },
   "engines": {

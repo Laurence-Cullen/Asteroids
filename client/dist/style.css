@@ -1,4 +1,86 @@
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/framework/modal/Modal.scss ***!
+  \*********************************************************************************************************************************************************************************/
+.modal {
+  color: white;
+  position: absolute;
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+}
+
+.modal-header {
+  border-bottom: 1px solid white;
+  display: flex;
+  flex-direction: row;
+}
+
+.modal-title {
+  flex: 1 1;
+  padding: 5px;
+}
+
+.modal-expand {
+  border-left: 1px solid white;
+}
+.modal-expand button {
+  height: 100%;
+}
+
+.modal-content {
+  height: 0;
+  will-change: height;
+  transition: height ease-in-out 0.25s;
+  overflow: hidden;
+}
+
+.modal-drag-icon {
+  cursor: move;
+  border-right: 1px solid white;
+  padding: 5px;
+}
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/framework/slider/SliderWithLabel.scss ***!
+  \********************************************************************************************************************************************************************************************/
+.slider-with-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.slider-container {
+  display: flex;
+  flex-direction: row;
+}
+.slider-container .slider {
+  display: flex;
+  flex: 1 1;
+}
+.slider-container .slider input {
+  flex: 1 1;
+}
+.slider-container .slider-value {
+  min-width: 3em;
+}
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/control/render-light-vector/RenderLightCurveModal.scss ***!
+  \*************************************************************************************************************************************************************************************************************/
+.render-light-curve-button {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+/*!***********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/scene/Scene.scss ***!
+  \***********************************************************************************************************************************************************************/
+.scene {
+  height: 100vh !important;
+  width: 100vw !important;
+}
 /*!**********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/scss/style.scss ***!
   \**********************************************************************************************************************************************************************/
-
+body {
+  margin: 0;
+  background-color: black;
+}

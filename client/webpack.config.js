@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
-const devMode = process.env.NODE_ENV !== 'production';
 
 const SRC_DIR = './src/';
 
@@ -9,7 +8,7 @@ const include = [
     path.resolve(__dirname, SRC_DIR)
 ];
 
-module.exports = {
+module.exports = env => ({
     entry: SRC_DIR + 'index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -49,5 +48,5 @@ module.exports = {
         static: './dist',
         port: 9000
     },
-    mode : devMode ? 'development' : 'production'
-};
+    mode : env === 'production' ? 'production' : 'development'
+});
