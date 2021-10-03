@@ -2,3 +2,15 @@ body {
   margin: 0;
   background-color: black;
 }
+
+a {
+  color: white;
+
+  &:visited {
+    color: white;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}

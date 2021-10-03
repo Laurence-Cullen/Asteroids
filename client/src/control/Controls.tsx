@@ -5,6 +5,7 @@ import {useControls} from "./control-context/ControlContext";
 import {DisplayOptionsModal} from "./display-options-modal/DisplayOptionsModal";
 import {RenderLightVectorModal} from "./render-light-vector/RenderLightVectorModal";
 import {CameraControlsModal} from "./camera-controls-modal/CameraControlsModal";
+import {Modal} from "../framework/modal/Modal";
 
 const Controls: React.FC<{}> = () => {
     const {
@@ -52,6 +53,15 @@ const Controls: React.FC<{}> = () => {
                 initialPosition={[10, 620]}
             />
             <RenderLightVectorModal />
+            <Modal
+                title="Info"
+                width={300}
+                height={50}
+                initialPosition={[10, 720]}
+            >
+                Created by <a href={"https://2021.spaceappschallenge.org/challenges/statements/when-light-curves-throw-us-curve-balls/teams/cambridge-asteroids/project"}>Cambridge Asteroids</a>.
+                View the code on <a href="https://github.com/Laurence-Cullen/Asteroids">Github</a>.
+            </Modal>
         </>
     );
 }
