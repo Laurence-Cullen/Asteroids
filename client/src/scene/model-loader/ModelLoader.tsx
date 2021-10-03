@@ -16,13 +16,14 @@ const ModelLoader: React.FC<ModelLoaderProps> = (props) => {
     } = props;
 
     const stl: BufferGeometry = useLoader(STLLoader, filename);
-    stl.computeVertexNormals();
 
     const ref: MutableRefObject<Object3D | null> = useRef(null)
 
     // Scale the incoming files so they're around the same size
     useLayoutEffect(() => {
         if (ref.current) {
+            stl.computeVertexNormals();
+
             ref.current.scale.set(1, 1, 1);
 
             const boundingBox = new THREE.Box3().setFromObject(ref.current);
