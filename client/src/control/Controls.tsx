@@ -4,6 +4,7 @@ import {FileUploadModal} from "./file-upload-modal/FileUploadModal";
 import {useControls} from "./control-context/ControlContext";
 import {DisplayOptionsModal} from "./display-options-modal/DisplayOptionsModal";
 import {RenderLightVectorModal} from "./render-light-vector/RenderLightVectorModal";
+import {CameraControlsModal} from "./camera-controls-modal/CameraControlsModal";
 
 const Controls: React.FC<{}> = () => {
     const {
@@ -43,6 +44,12 @@ const Controls: React.FC<{}> = () => {
                 width={150}
                 height={75}
                 initialPosition={[10, 490]}
+            />
+            <CameraControlsModal
+                title="Camera control"
+                width={300}
+                height={50}
+                initialPosition={[10, 600]}
             />
             <RenderLightVectorModal />
         </>

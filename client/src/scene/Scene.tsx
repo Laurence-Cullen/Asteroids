@@ -20,7 +20,8 @@ const Scene: React.FC = () => {
         file,
         drawVectors,
         drawGrid,
-        drawBackground
+        drawBackground,
+        fixCamera
     } = useControls();
 
     return (
@@ -35,7 +36,7 @@ const Scene: React.FC = () => {
             />
             {drawVectors && <Vectors rotation={rotation} lightDirection={lightDirection} />}
             {drawGrid && <GridAxis/>}
-            <CameraControls />
+            <CameraControls fixCamera={fixCamera} />
             <Effects />
         </Canvas>
     )

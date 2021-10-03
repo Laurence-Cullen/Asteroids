@@ -19,6 +19,8 @@ type ControlContext = {
     setDrawVectors: (val: boolean) => void;
     drawBackground: boolean;
     setDrawBackground: (val: boolean) => void;
+    fixCamera: boolean;
+    setFixCamera: (val: boolean) => void;
 }
 
 const ControlContextDefaultValues: ControlContext = {
@@ -41,7 +43,9 @@ const ControlContextDefaultValues: ControlContext = {
     drawVectors: false,
     setDrawVectors: () => {},
     drawBackground: true,
-    setDrawBackground: () => {}
+    setDrawBackground: () => {},
+    fixCamera: false,
+    setFixCamera: () => {}
 }
 
 const Context = React.createContext<ControlContext>(ControlContextDefaultValues);
@@ -55,6 +59,7 @@ const ControlContextProvider: React.FC = (props) => {
     const [drawGrid, setDrawGrid] = useState<boolean>(ControlContextDefaultValues.drawGrid);
     const [drawVectors, setDrawVectors] = useState<boolean>(ControlContextDefaultValues.drawVectors);
     const [drawBackground, setDrawBackground] = useState<boolean>(ControlContextDefaultValues.drawBackground);
+    const [fixCamera, setFixCamera] = useState<boolean>(ControlContextDefaultValues.fixCamera);
 
     const context = useMemo(() => {
        return {
@@ -69,9 +74,11 @@ const ControlContextProvider: React.FC = (props) => {
            drawVectors,
            setDrawVectors,
            drawBackground,
-           setDrawBackground
+           setDrawBackground,
+           fixCamera,
+           setFixCamera
        }
-    }, [rotation, file, lightDirection, drawGrid, drawVectors, drawBackground]);
+    }, [rotation, file, lightDirection, drawGrid, drawVectors, drawBackground, fixCamera]);
 
     return (<Context.Provider value={context}>{children}</Context.Provider>)
 };
