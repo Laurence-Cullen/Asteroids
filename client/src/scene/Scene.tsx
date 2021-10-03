@@ -31,7 +31,7 @@ const Scene: React.FC = () => {
                 </Suspense>
             </RotatingGroup>
             <Sun
-                distance={100}
+                distance={1000}
                 polarAngle={lightDirection.polar}
                 azimuthAngle={lightDirection.azimuth}
             />
