@@ -35,14 +35,14 @@ const Controls: React.FC<{}> = () => {
             <FileUploadModal
                 title="Upload an STL file"
                 width={200}
-                height={75}
+                height={100}
                 initialPosition={[10, 340]}
             />
             <DisplayOptionsModal
                 title="Display options"
                 width={150}
                 height={75}
-                initialPosition={[10, 450]}
+                initialPosition={[10, 490]}
             />
             <RenderLightVectorModal />
         </>

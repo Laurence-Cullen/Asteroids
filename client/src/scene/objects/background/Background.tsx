@@ -2,7 +2,7 @@ import React, {useLayoutEffect, useMemo} from "react";
 import {CubeTexture, CubeTextureLoader} from "three";
 import {useThree} from "@react-three/fiber";
 
-const BACKGROUND_FILE_PATH = './shannon-stars.jpg';
+const BACKGROUND_FILE_PATH = './images/shannon-stars.jpg';
 
 type BackgroundProps = {
     drawBackground?: boolean

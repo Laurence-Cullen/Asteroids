@@ -40,11 +40,13 @@ const RenderLightVectorModal: React.FC<{}> = () => {
                     // Obtain data from endpoint
                     return fetch(LIGHT_CURVE_ENDPOINT, {
                             method: "POST",
+                            mode: 'no-cors',
                             body: body
                         });
                     }
                 )
                 .then((data) => data.json())
+                // .then((data) => JSON.parse(data))
                 .then((data: LightCurveData) => {
                     console.log(data);
 
