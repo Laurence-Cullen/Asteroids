@@ -52,7 +52,11 @@ const ModelLoader: React.FC<ModelLoaderProps> = (props) => {
 
     return (
         <>
-            <mesh ref={ref} position={[0, 0, 0]} geometry={stl}>
+            <mesh
+                ref={ref}
+                position={[0, 0, 0]}
+                geometry={stl}
+            >
                 <meshPhongMaterial
                     color={"grey"}
                     side={THREE.DoubleSide}

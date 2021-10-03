@@ -1,6 +1,7 @@
 import {Modal} from "../../framework/modal/Modal";
 import React from "react";
 import {Line} from "react-chartjs-2";
+import {ChartOptions} from "chart.js";
 
 type LightCurveData = {
     curve: number[]
@@ -11,8 +12,31 @@ const LightCurveModal: React.FC<LightCurveData> = (props) => {
         curve
     } = props;
 
-    const options = {
-
+    const options: ChartOptions = {
+        scales: {
+            xAxis: {
+                title: {
+                    display: true,
+                    text: 'Degree of rotation',
+                    color: 'white'
+                },
+                ticks: {
+                    color: 'white'
+                }
+            },
+            yAxis: {
+                title: {
+                    display: true,
+                    text: 'Light intensity',
+                    color: 'white'
+                },
+                min: 0,
+                max: 1,
+                ticks: {
+                    color: 'white'
+                }
+            }
+        }
     }
 
     const data = {

@@ -23,7 +23,7 @@ const RotatingGroup: React.FC<RotatingGroupProps> = (props) => {
 
     const ref: MutableRefObject<THREE.Group | null> = useRef(null)
 
-    // Reset orientation on reset
+    // Reset orientation on change
     useEffect(() => {
         if (ref.current !== null && ref.current.rotation !== undefined) {
             ref.current.rotation.x = 0;
